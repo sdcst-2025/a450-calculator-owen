@@ -55,8 +55,6 @@ Available Commands:
 ''')
     return None
 
-
-
 def main():
     """
     main block of code that will run your program and control program flow
