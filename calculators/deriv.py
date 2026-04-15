@@ -11,16 +11,16 @@ Avilable Functions:
     /
     *
     ^
-    e
-    pi
 -------------------------------- 
 '''
+#3.141 592 653 589 793
 
 def formulaInterpreter(formula, variable):
+    #replace strings with math stuff
     formatted = formula.replace('x',variable) 
     formatted = formatted.replace('^','**')
-    #eval() formula
-
+    final = eval(formatted) #evaluate formula
+    return final
 
 
 def deriv():
@@ -31,7 +31,12 @@ def deriv():
     inputFormula = input().split(',')
     formula = inputFormula[0].lower()
     variable = inputFormula[1]
-
+    highVariable = int(variable) + 0.000000000000001
+    highVariable = str(highVariable)
+    high = formulaInterpreter(formula, highVariable)
+    unchanged = formulaInterpreter(formula, variable)
+    derivative = (high - unchanged)/0.000000000000001
+    print(derivative)
 
 # find slightly higher secant and slightly lower secant
 #(f(x+h) - f(x))/h
@@ -39,3 +44,4 @@ def deriv():
 
 if __name__ == '__main__':
     deriv()
+
