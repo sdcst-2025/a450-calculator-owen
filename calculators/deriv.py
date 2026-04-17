@@ -24,7 +24,7 @@ def formulaInterpreter(formula, variable):
 
 
 def deriv():
-    print('derivative')
+    print('derivative calculator')
     print('enter a formula and x-value to take the derivative at a point.')
     print('note: x must be used as the variable in your equation')
     print('[formula], [x-value]')
