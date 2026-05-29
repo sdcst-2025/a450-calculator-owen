@@ -18,49 +18,53 @@ SAformulas = {
     }, 
     'sphere': {
         'vars':['radius'],
-        'formula': '4 * pi * (radius)**2'
+        'formula': lambda radius: 4*pi*(radius)**2
     },
     'cylinder': {
         'vars':['radius', 'height'],
-        'formula': '2 * pi * radius * (radius + height)'
+        'formula': lambda radius, height: 2*pi*radius*(radius + height) 
     },
     'cone': {
         'vars':['radius', 'height'],
-        'formula': 'pi * radius * (radius + (math.sqrt(radius**2 + height**2)))'
+        'formula': lambda radius, height: pi*radius*(radius + (math.sqrt(radius**2 + height **2)))
     },
     'sqPyramid' : {
         'vars':['side_length', 'height'],
-        'formula': 'side_length * (side_length + math.sqrt(side_length**2 + 4*(height**2)))'
+        'formula': lambda side_length, height: side_length * (side_length + math.sqrt(side_length**2 + 4*(height**2)))
     }
 }
 
 def SA():
-    print('Surface Area Calculator')
-    time.sleep(1)
-    print('''
+    while True:
+        print('Surface Area Calculator')
+        time.sleep(1)
+        print('''
 --------------------------------------
     what do you want to calculate?
     available calculators:
-          cuboid
-          sphere
-          cylinder
-          cone
-          pyramid
+        cuboid
+        sphere
+        cylinder
+        cone
+        pyramid
 --------------------------------------
 ''')
-    calculatorChoice = input().lower()
-    if calculatorChoice == 'END':
-        pass
-    elif calculatorChoice in SAformulas:
-        for i in SAformulas[calculatorChoice]['vars']:
-            globals()[i] = input(f'{i} = ')
-        print(SAformulas[calculatorChoice]['formula']())
-       # formulaEval = eval(SAformulas[calculatorChoice]['formula']) # needs to evaluate variables as numbers instead of strings
-    elif calculatorChoice not in SAformulas:
-        print('That calculator does not exist.')
+        calculatorChoice = input().lower()
+        print('')
+        if calculatorChoice == 'end':
+            break
+        elif calculatorChoice in SAformulas:
+            variables=[]
+            for i in SAformulas[calculatorChoice]['vars']:
+                globals()[i] = int(input(f'{i} = '))
+                variables.append(globals()[i])
+            print('')
+            print('total surface area:',SAformulas[calculatorChoice]['formula'](*variables))
+        elif calculatorChoice not in SAformulas:
+            print('That calculator does not exist. Make sure your spelling is correct.')
+        print('enter END to exit')
         time.sleep(1)
-        SA()
-
+    
 #print(SAformulas['cuboid']['formula'])
 
 if __name__ == '__main__':
