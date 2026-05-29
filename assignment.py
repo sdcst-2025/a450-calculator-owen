@@ -49,7 +49,7 @@ Available Commands:
     volume calculator -- vol
     surface area calculator -- SA
     area calculator -- area
-    derivative calculator - deriv
+    derivative calculator -- deriv
     interest calculator -- int
 --------------------------------
 ''')
