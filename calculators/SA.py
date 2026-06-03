@@ -28,7 +28,7 @@ SAformulas = {
         'vars':['radius', 'height'],
         'formula': lambda radius, height: pi*radius*(radius + (math.sqrt(radius**2 + height **2)))
     },
-    'sqPyramid' : {
+    'pyramid' : {
         'vars':['side_length', 'height'],
         'formula': lambda side_length, height: side_length * (side_length + math.sqrt(side_length**2 + 4*(height**2)))
     }
@@ -59,7 +59,8 @@ def SA():
                 globals()[i] = int(input(f'{i} = '))
                 variables.append(globals()[i])
             print('')
-            print('total surface area:',SAformulas[calculatorChoice]['formula'](*variables))
+            print('Total surface area:',SAformulas[calculatorChoice]['formula'](*variables))
+            time.sleep(1)
         elif calculatorChoice not in SAformulas:
             print('That calculator does not exist. Make sure your spelling is correct.')
         print('enter END to exit')
